@@ -48,9 +48,25 @@ Constraints:
     s is a valid parentheses string.
 
 */
-#include <string.h>
 
+#include <string>
+using std::string;
 class Solution {
 public:
-  string removeOuterParentheses(string s) {}
-}
+  string removeOuterParentheses(string s) {
+    int counter = 0;
+    string temp;
+    for (auto it : s) {
+      if (it == '(') {
+        counter++;
+        if (counter > 1)
+          temp.push_back(it);
+      } else if (it == ')') {
+        counter--;
+        if (counter > 0)
+          temp.push_back(it);
+      }
+    }
+    return temp;
+  }
+};
