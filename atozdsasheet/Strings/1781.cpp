@@ -75,6 +75,7 @@ public:
   }
 
 private:
+  // Belongs to METHOD 1
   int calculateBeautyValue(string s) {
     std::map<char, int> m;
     int maxFreq = INT_MIN;
@@ -93,6 +94,6 @@ private:
 };
 int main(int argc, char *argv[]) {
   Solution s;
-  std::cout << s.beautySum("aabcbaa");
+  std::cout << s.beautySum("aabcbaa") << std::endl;
   return 0;
 }
