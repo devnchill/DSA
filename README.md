@@ -1,31 +1,26 @@
-# Journey to Competitive Programming
+# 🚀 Journey to Competitive Programming
 
-Hey! I’m Viena — currently grinding my way into the world of **competitive programming**.
+Hey! I’m **Viena** — currently deep into the grind of **competitive programming** and algorithmic problem-solving.
 
-Right now I’m:
+Right now, I’m primarily focused on solving problems from:
 
-- Solving problems on **LeetCode**, following the **Striver’s A2Z DSA Sheet** as my main roadmap.
-- Building consistency and sharpening fundamentals step by step.
+- **Striver’s A2Z DSA Sheet** — to master the fundamentals step by step
+- **NeetCode 250** — for additional structured practice and pattern recognition
 
-Next up on my path:
-
-- Either diving into **NeetCode 150/250** for more structured practice
-- Or making the jump straight to **Codeforces** to test myself in real contests.
-
-I’m keeping it simple: learn → practice → compete.
+> Note: There are fewer files in the `neetcode250` directory since many problems overlap with those from the A2Z sheet and are already included in the `a-z` folder instead.
 
 ---
 
 ## 📊 My Progress
 
-Check out my **LeetCode profile** for live updates on my problem-solving streak:  
+Track my problem-solving streak and submissions here:  
 👉 [https://leetcode.com/u/0xViena/](https://leetcode.com/u/0xViena/)
 
 ---
 
 ## 🎯 Long-Term Goals
 
-- Get comfortable with **Codeforces Div. 2 contests**
-- Explore more advanced problem-solving patterns
+- Get comfortable with **Codeforces contests**
+- Deepen understanding of advanced **DSA and problem-solving patterns**
 
 ![Patterns](https://github.com/user-attachments/assets/652109c3-12f5-4da4-a2a4-c16cab429e69)
