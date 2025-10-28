@@ -76,28 +76,89 @@ public:
   long long subArrayRanges(vector<int> &nums) {
     int n = nums.size();
     long long sum = 0;
-    vector<int> nsl = getNSL(nums, n);
-    vector<int> nsr = getNSR(nums, n);
-    vector<int> nll = getNLL(nums, n);
-    vector<int> nlr = getNLR(nums, n);
+    vector<int> ps = getPS(nums, n);
+    vector<int> ns = getNS(nums, n);
+    vector<int> pl = getPL(nums, n);
+    vector<int> nl = getNL(nums, n);
     for (int i = 0; i < n; i++) {
-      long long ls = nsl[i];
-      long long rs = nsl[i];
-      long long ll = nll[i];
-      long long rl = nlr[i];
+      long long l = (i - pl[i]) * (nl[i] - i);
+      long long s = (i - ps[i]) * (ns[i] - i);
+      sum += (l - s) * nums[i];
     }
     return sum;
   }
 
 private:
-  vector<int> getNSL(vector<int> &nums, int n) {}
-  vector<int> getNSR(vector<int> &nums, int n) {}
-  vector<int> getNLL(vector<int> &nums, int n) {}
-  vector<int> getNLR(vector<int> &nums, int n) {}
+  vector<int> getPS(vector<int> &nums, int n) {
+    stack<int> stk;
+    vector<int> res(n, -1);
+    for (int i = 0; i < n; i++) {
+      if (i == 0) {
+        stk.push(i);
+        continue;
+      }
+      while (!stk.empty() && nums[stk.top()] > nums[i]) {
+        stk.pop();
+      }
+      res[i] = stk.empty() ? -1 : stk.top();
+      stk.push(i);
+    }
+    return res;
+  }
+
+  vector<int> getNS(vector<int> &nums, int n) {
+    stack<int> stk;
+    vector<int> res(n, n);
+    for (int i = n - 1; i >= 0; i--) {
+      if (i == n - 1) {
+        stk.push(i);
+        continue;
+      }
+      while (!stk.empty() && nums[stk.top()] >= nums[i]) {
+        stk.pop();
+      }
+      res[i] = stk.empty() ? n : stk.top();
+      stk.push(i);
+    }
+    return res;
+  }
+  vector<int> getPL(vector<int> &nums, int n) {
+    stack<int> stk;
+    vector<int> res(n, -1);
+    for (int i = 0; i < n; i++) {
+      if (i == 0) {
+        stk.push(i);
+        continue;
+      }
+      while (!stk.empty() && nums[stk.top()] < nums[i]) {
+        stk.pop();
+      }
+      res[i] = stk.empty() ? -1 : stk.top();
+      stk.push(i);
+    }
+    return res;
+  }
+  vector<int> getNL(vector<int> &nums, int n) {
+    stack<int> stk;
+    vector<int> res(n, n);
+    for (int i = n - 1; i >= 0; i--) {
+      if (i == n - 1) {
+        stk.push(i);
+        continue;
+      }
+      while (!stk.empty() && nums[stk.top()] <= nums[i]) {
+        stk.pop();
+      }
+      res[i] = stk.empty() ? n : stk.top();
+      stk.push(i);
+    }
+    return res;
+  }
 };
 
 int main() {
   Solution s;
   vector<int> nums = {4, -2, -3, 4, 1};
-  cout << s.subArrayRanges(nums);
+  long long res = s.subArrayRanges(nums);
+  cout << res;
 }
