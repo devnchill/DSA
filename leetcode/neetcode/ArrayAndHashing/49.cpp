@@ -37,10 +37,10 @@ public:
   vector<vector<string>> groupAnagrams(vector<string> &strs) {
     unordered_map<string, vector<string>> m;
     vector<vector<string>> res;
-    for (auto it : strs) {
-      string key = it;
+    for (string st : strs) {
+      string key = st;
       sort(key.begin(), key.end());
-      m[key].push_back(it);
+      m[key].push_back(st);
     }
     for (auto k : m) {
       res.push_back(k.second);
