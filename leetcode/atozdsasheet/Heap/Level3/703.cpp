@@ -68,16 +68,30 @@ At most 104 calls will be made to add.
 using namespace std;
 
 class KthLargest {
+  priority_queue<int, vector<int>, greater<int>> p;
+  int k;
 
 public:
-  KthLargest(int k, vector<int> &nums) {}
+  KthLargest(int k, vector<int> &nums) : k(k) {
+    for (int x : nums) {
+      p.push(x);
+      if (p.size() > k)
+        p.pop();
+    }
+  }
 
-  int add(int val) {}
+  int add(int val) {
+    p.push(val);
+    if (p.size() > k)
+      p.pop();
+    return p.top();
+  }
 };
+;
 
 int main(int argc, char *argv[]) {
   vector<int> nums = {7, 7, 7, 7, 8, 3};
-  KthLargest obj(3, nums);
+  KthLargest obj(4, nums);
   cout << obj.add(2) << "\n";
   cout << obj.add(10) << "\n";
   cout << obj.add(9) << "\n";
