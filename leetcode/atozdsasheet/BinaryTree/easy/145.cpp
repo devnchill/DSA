@@ -53,6 +53,7 @@ struct TreeNode {
       : val(x), left(left), right(right) {}
 };
 
+// Recursive approach
 class Solution {
 private:
   void traversal(vector<int> &res, TreeNode *curr) {
@@ -69,6 +70,18 @@ public:
       return {};
     vector<int> res;
     traversal(res, root);
+    return res;
+  }
+};
+
+// Iterative approach
+class Solution2 {
+
+public:
+  vector<int> postorderTraversal(TreeNode *root) {
+    if (!root)
+      return {};
+    vector<int> res;
     return res;
   }
 };
