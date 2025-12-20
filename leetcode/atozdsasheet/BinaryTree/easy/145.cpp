@@ -82,6 +82,37 @@ public:
     if (!root)
       return {};
     vector<int> res;
+    stack<TreeNode *> st;
+    TreeNode *last_visited = nullptr;
+    TreeNode *curr = root;
+    while (!st.empty() || curr) {
+      if (curr) {
+        st.push(curr);
+        curr = curr->left;
+      } else {
+        TreeNode *node = st.top();
+        if (node->right && node->right != last_visited) {
+          node = curr->right;
+        } else {
+          res.push_back(node->val);
+          last_visited = node;
+          st.pop();
+        }
+      }
+    }
     return res;
   }
 };
+
+int main(int argc, char *argv[]) {
+  Solution2 s;
+  TreeNode *left_left = new TreeNode(-1);
+  TreeNode *left_right = new TreeNode(0);
+  TreeNode *left = new TreeNode(1, left_left, left_right);
+  TreeNode *right = new TreeNode(2);
+  TreeNode *root = new TreeNode(3, left, right);
+  auto res = s.postorderTraversal(root);
+  for (int &val : res)
+    cout << val << "\n";
+  return 0;
+}
