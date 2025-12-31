@@ -34,14 +34,33 @@ Constraints:
 using namespace std;
 
 class Solution {
+private:
+  vector<int> m;
+  bool check(int pointer, int endpoint, vector<int> &nums) {
+    if (pointer >= endpoint)
+      return true;
+
+    if (m[pointer] != -1)
+      return m[pointer];
+    int max_jump = min(nums[pointer], endpoint - pointer);
+    for (int j = max_jump; j >= 1; j--)
+      if (check(pointer + j, endpoint, nums)) {
+        return m[pointer] = 1;
+      };
+    return m[pointer] = 0;
+  }
+
 public:
   bool canJump(vector<int> &nums) {
-    int len = nums.size(), i = 1;
-    while (i < len) {
-      if (nums[i] == 0)
-        return false;
-      i += nums[i];
-    }
-    return true;
+    int n = nums.size();
+    m.assign(n, -1);
+    return check(0, n - 1, nums);
   }
 };
+
+int main() {
+  Solution s;
+  vector<int> n = {3, 2, 1, 0, 4};
+  cout << s.canJump(n);
+  return 0;
+}
