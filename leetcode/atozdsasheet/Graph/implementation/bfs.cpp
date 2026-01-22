@@ -4,6 +4,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void bfs() {}
-
-int main(int argc, char *argv[]) { return 0; }
+vector<int> bfs(int v, vector<int> adj[]) {
+  vector<int> vis(v);
+  vis[0] = 1;
+  queue<int> q;
+  q.push(0);
+  vector<int> bfs;
+  while (!q.empty()) {
+    int curr = q.front();
+    q.pop();
+    for (int val : adj[curr]) {
+      if (!vis[val]) {
+        vis[val] = 1;
+        q.push(val);
+      }
+    }
+  }
+  return bfs;
+}
