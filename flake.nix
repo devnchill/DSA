@@ -1,5 +1,5 @@
 {
-  description = "Dev env for dsa problems.Languages present(g++ for c++,tsx for typescript)";
+  description = "A very basic flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -12,10 +12,13 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      devShells.x86_64-linux.default = pkgs.mkShell {
-        nativeBuildInputs = with pkgs; [
-          llvmPackages_22.clang-unwrapped
+      devShells.${system}.default = pkgs.mkShell {
+        packages = with pkgs; [
+          clang-tools
           tsx
+          nixfmt
+          prettierd
+          typescript-language-server
         ];
       };
     };
