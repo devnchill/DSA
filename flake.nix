@@ -15,10 +15,17 @@
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
           clang-tools
-          tsx
+
           nixfmt
+          nil
+
+          tsx
           prettierd
           typescript-language-server
+
+          ghc
+          haskell-language-server
+          ormolu
         ];
       };
     };
