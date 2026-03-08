@@ -26,6 +26,7 @@
           ghc
           haskell-language-server
           ormolu
+          cabal-install
         ];
       };
     };
