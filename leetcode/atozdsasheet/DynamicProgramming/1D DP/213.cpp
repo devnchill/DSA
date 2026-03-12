@@ -38,7 +38,24 @@ class Solution {
 public:
   int rob(vector<int> &nums) {
     int n = nums.size();
-    vector<int> dp(n);
-    dp[0] = max(dp[n - 1], dp[n - 2] + nums[0]);
+    if (n == 1)
+      return nums[0];
+    if (n == 2)
+      return max(nums[0], nums[1]);
+
+    auto robLinear = [](vector<int> houses) {
+      int prev2 = 0, prev1 = 0;
+      for (int money : houses) {
+        int curr = max(prev1, prev2 + money);
+        prev2 = prev1;
+        prev1 = curr;
+      }
+      return prev1;
+    };
+
+    int case1 = robLinear(vector<int>(nums.begin(), nums.end() - 1));
+    int case2 = robLinear(vector<int>(nums.begin() + 1, nums.end()));
+
+    return max(case1, case2);
   }
 };

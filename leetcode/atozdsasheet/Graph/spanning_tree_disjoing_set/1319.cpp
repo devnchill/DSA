@@ -48,3 +48,35 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+
+class Solution {
+private:
+  void dfs(vector<vector<int>> &adj, vector<int> &visited, int node) {
+    visited[node] = 1;
+    for (int &neigh : adj[node]) {
+      if (visited[neigh])
+        continue;
+      dfs(adj, visited, neigh);
+    }
+  }
+
+public:
+  int makeConnected(int n, vector<vector<int>> &connections) {
+    if (connections.size() < n - 1)
+      return -1;
+    vector<vector<int>> adj(n);
+    for (auto &a : connections) {
+      adj[a[0]].push_back(a[1]);
+      adj[a[1]].push_back(a[0]);
+    }
+    int res = 0;
+    vector<int> visited(n, 0);
+    for (int i = 0; i < n; i++) {
+      if (visited[i])
+        continue;
+      res++;
+      dfs(adj, visited, i);
+    }
+    return res - 1;
+  }
+};
