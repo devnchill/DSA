@@ -1,3 +1,5 @@
+module P34 where
+
 import P33 (coprime)
 
 -- Calculate Euler's totient function phi(m).
