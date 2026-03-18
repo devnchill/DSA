@@ -62,7 +62,7 @@ executable haskell
     main-is:          Main.hs
 
     -- Modules included in this executable, other than Main.
-    other-modules:P23,P24,P25,P31,P32,P33,P34,P35,P36,P37,P39,P40,P41
+    other-modules:P23,P24,P25,P31,P32,P33,P34,P35,P36,P37,P39,P40,P41,P46
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
