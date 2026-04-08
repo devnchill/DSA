@@ -35,5 +35,19 @@ using namespace std;
 
 class Solution {
 public:
-  int minimumTotal(vector<vector<int>> &triangle) { vector<vector<int>> dp; }
+  int minimumTotal(vector<vector<int>> &triangle) {
+    vector<vector<int>> dp = triangle;
+    for (int i = 1; i < triangle.size(); i++) {
+      for (int j = 0; j < i + 1; j++) {
+        if (j == 0)
+          dp[i][j] = dp[i - 1][j] + dp[i][j];
+        else if (j == i) {
+          dp[i][j] = dp[i - 1][j - 1] + dp[i][j];
+        } else {
+          dp[i][j] = min(dp[i - 1][j - 1] + dp[i][j], dp[i - 1][j] + dp[i][j]);
+        }
+      }
+    }
+    return *min_element(dp.back().begin(), dp.back().end());
+  }
 };
