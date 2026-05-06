@@ -18,11 +18,14 @@ public:
       return head;
     ListNode *temp = head;
     int length = 1;
+    // calc length
     while (temp->next != NULL) {
       ++length;
       temp = temp->next;
     }
+    // point tail to head
     temp->next = head;
+    // ensures 0<= k <=length
     k = k % length;
     int end = length - k;
     while (end--)
