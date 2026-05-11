@@ -59,5 +59,33 @@ using namespace std;
 
 class Solution {
 public:
-  vector<vector<char>> rotateTheBox(vector<vector<char>> &boxGrid) {}
+  vector<vector<char>> rotateTheBox(vector<vector<char>> &boxGrid) {
+    int m = boxGrid.size();
+    int n = boxGrid[0].size();
+    vector<vector<char>> rotated(n, vector<char>(m));
+
+    for (int i = 0; i < m; i++) {
+      for (int j = 0; j < n; j++) {
+        rotated[j][m - 1 - i] = boxGrid[i][j];
+      }
+    }
+    for (int col = 0; col < m; col++) {
+      // set last row as empty row
+      int emptyRow = n - 1;
+
+      // traverse row
+      for (int row = n - 1; row >= 0; row--) {
+        // if hti a solid
+        if (rotated[row][col] == '*') {
+          emptyRow = row - 1;
+        } else if (rotated[row][col] == '#') {
+          rotated[row][col] = '.';
+          rotated[emptyRow][col] = '#';
+          emptyRow--;
+        }
+      }
+    }
+
+    return rotated;
+  }
 };
