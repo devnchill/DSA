@@ -3,5 +3,5 @@ module P32 where
 
 myGcd :: Int -> Int -> Int
 myGcd a b
-  | a == 0 = b
+  | b == 0 = a
   | otherwise = myGcd b (a `mod` b)

@@ -7,7 +7,7 @@ not' False = True
 and', or', xor', nand', impl', equ', nor' :: Bool -> Bool -> Bool
 and' True True = True
 and' _ _ = False
-or' False False = True
+or' False False = False
 or' _ _ = True
 nor' a b = not $ or' a b
 equ' a b
