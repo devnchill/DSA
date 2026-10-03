@@ -15,6 +15,7 @@
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
           clang-tools
+          lldb
 
           nixfmt
           nil
